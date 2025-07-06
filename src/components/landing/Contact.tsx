@@ -5,11 +5,8 @@ import Link from "next/link";
 
 const Contact: React.FC = () => {
   return (
-    <section
-      className="bg-transparent min-h-screen w-full flex flex-col justify-center items-center"
-      id="contact"
-    >
-      <div className="bg-secondary w-full py-8 md:py-12 px-6 md:px-8 rounded-3xl max-w-6xl mx-auto flex flex-col items-center">
+    <section className="bg-transparent min-h-screen w-full flex flex-col justify-center items-center py-12 md:py-20">
+      <div className="bg-secondary/80 backdrop-blur-sm h-full w-full py-8 md:py-12 px-6 md:px-8 rounded-3xl max-w-7xl mx-auto flex flex-col items-center border border-white/10">
         <motion.h4
           initial={{ opacity: 0.5, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -18,7 +15,7 @@ const Contact: React.FC = () => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm md:text-base font-medium mb-6 md:mb-8"
+          className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#85D1F1]/20 to-[#60C3E8]/20 text-[#85D1F1] text-sm md:text-base font-medium mb-6 md:mb-8"
         >
           Contact Us
         </motion.h4>
@@ -101,7 +98,7 @@ const Contact: React.FC = () => {
         <div className="w-full flex justify-center">
           <Link
             href="/engage-with-us"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium flex items-center text-sm md:text-base"
+            className="group relative inline-flex items-center justify-center bg-gradient-to-r from-[#85D1F1] to-[#60C3E8] text-white hover:from-[#60C3E8] hover:to-[#85D1F1] px-6 py-3 rounded-full font-medium flex items-center text-sm md:text-base"
           >
             Contact Us
           </Link>

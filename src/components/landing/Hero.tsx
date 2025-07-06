@@ -1,7 +1,8 @@
 import React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import { Carousel,
+import {
+  Carousel,
   CarouselContent,
   CarouselItem,
 } from "../../components/ui/carousel";
@@ -39,10 +40,13 @@ const Hero: React.FC = () => {
       <div className="relative bg-transparent overflow-hidden pb-8">
         {/* Container for the carousel and the overlay */}
         <div className="relative w-full h-full">
-          {/* Enhanced gradient overlay with subtle animation */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50 z-10 rounded-b-[30px] shadow-xl animate-pulse-subtle" />
+          {/* Enhanced gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/75 to-black/70 z-10 rounded-b-[30px] shadow-xl" />
 
-          {/* Image Carousel with enhanced animations */}
+          {/* Additional text backdrop for critical readability */}
+          <div className="absolute inset-0 z-[11] bg-gradient-to-b from-black/30 via-transparent to-black/40 rounded-b-[30px]" />
+
+          {/* Image Carousel */}
           <Carousel
             className="w-full h-full carousel-container"
             opts={{
@@ -51,7 +55,7 @@ const Hero: React.FC = () => {
             }}
             plugins={[
               Autoplay({
-                delay: 6000, // Slightly longer for more professional feel
+                delay: 6000,
                 stopOnInteraction: false,
               }),
             ]}
@@ -69,61 +73,88 @@ const Hero: React.FC = () => {
                                transform transition-all duration-1000 ease-in-out
                                hover:scale-105 carousel-image"
                     />
-                    {/* Subtle Ken Burns effect overlay */}
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-transparent to-black/10 opacity-0 
-                                  transition-opacity duration-700 hover:opacity-100"
-                    />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
 
-          {/* Enhanced Main Hero Content with staggered animations */}
-          <div className="absolute inset-0 flex items-center justify-center z-10">
+          {/* Enhanced Main Hero Content with better text readability */}
+          <div className="absolute inset-0 flex items-center justify-center z-[12]">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h1
-                className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 lg:mb-8 text-white leading-tight tracking-tight
-                           animate-fade-in-up animation-delay-200"
-              >
-                Advancing{" "}
-                <span className="text-[#85D1F1] animate-glow">AI</span> for
-                <br />
-                <span className="font-accent animate-fade-in-up animation-delay-400">
-                  Social Good
-                </span>
-                <br />
-                <span className="animate-fade-in-up animation-delay-600">
-                  Together
-                </span>
-              </h1>
-              <p
-                className="font-sans text-sm sm:text-base md:text-lg lg:text-xl text-lightText-secondary mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto leading-relaxed
-                          animate-fade-in-up animation-delay-800"
-              >
-                Collaborative research, innovation, and education in artificial
-                intelligence.
-              </p>
+              {/* Text container with subtle backdrop */}
+              <div className="relative">
+                {/* Subtle text backdrop for enhanced readability */}
+                <div className="absolute inset-0 bg-black/20 rounded-2xl blur-xl scale-110 -z-10" />
+
+                <h1
+                  className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 lg:mb-8 text-white leading-tight tracking-tight
+                             animate-fade-in-up animation-delay-200 drop-shadow-2xl"
+                  style={{
+                    textShadow: `
+                      0 0 20px rgba(0, 0, 0, 0.8),
+                      2px 2px 4px rgba(0, 0, 0, 0.9),
+                      0 0 40px rgba(0, 0, 0, 0.5)
+                    `,
+                  }}
+                >
+                  Advancing{" "}
+                  <span
+                    className="text-[#85D1F1] animate-glow font-extrabold"
+                    style={{
+                      textShadow: `
+                        0 0 20px rgba(133, 209, 241, 0.6),
+                        2px 2px 4px rgba(0, 0, 0, 0.9),
+                        0 0 40px rgba(133, 209, 241, 0.3)
+                      `,
+                    }}
+                  >
+                    AI
+                  </span>{" "}
+                  for
+                  <br />
+                  <span className="font-accent animate-fade-in-up animation-delay-400">
+                    Social Good
+                  </span>
+                  <br />
+                  <span className="animate-fade-in-up animation-delay-600">
+                    Together
+                  </span>
+                </h1>
+
+                <p
+                  className="font-sans text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto leading-relaxed
+                            animate-fade-in-up animation-delay-800 font-medium"
+                  style={{
+                    textShadow: `
+                      1px 1px 3px rgba(0, 0, 0, 0.8),
+                      0 0 15px rgba(0, 0, 0, 0.6)
+                    `,
+                  }}
+                >
+                  Collaborative research, innovation, and education in
+                  artificial intelligence for a better tomorrow.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Enhanced Feature Cards with staggered entrance animations */}
+          {/* Enhanced Feature Cards with improved readability */}
           <div className="absolute -bottom-20 sm:-bottom-16 md:-bottom-12 lg:-bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 sm:px-6">
             {featureCards.map((card, index) => (
               <div
                 key={index}
-                className={`bg-secondary rounded-xl p-3 sm:p-4 flex items-center border border-border shadow-lg 
-                          transition-all duration-500 hover:shadow-xl hover:bg-accent hover:-translate-y-1 
-                          w-full animate-slide-up backdrop-blur-sm bg-secondary/90
+                className={`bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-4 flex items-center border border-gray-200/50 shadow-lg 
+                          transition-all duration-500 hover:shadow-xl hover:bg-white hover:-translate-y-1 
+                          w-full animate-slide-up
                           animation-delay-${(index + 1) * 200}`}
                 style={{
                   animationDelay: `${(index + 1) * 200}ms`,
                 }}
               >
                 <div
-                  className="bg-primary rounded-full p-2 sm:p-3 mr-3 sm:mr-4 flex-shrink-0 
-                              transition-transform duration-300 hover:rotate-12 hover:scale-110"
+                  className="bg-[#85D1F1] rounded-full p-2 sm:p-3 mr-3 sm:mr-4 flex-shrink-0 
+                              transition-transform duration-300 hover:rotate-12 hover:scale-110 shadow-md"
                 >
                   <Image
                     src={card.icon}
@@ -133,7 +164,7 @@ const Hero: React.FC = () => {
                     className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
                   />
                 </div>
-                <p className="text-foreground text-xs sm:text-sm font-medium leading-snug">
+                <p className="text-gray-800 text-xs sm:text-sm font-semibold leading-snug">
                   {card.text}
                 </p>
               </div>

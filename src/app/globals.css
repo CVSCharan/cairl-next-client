@@ -1,26 +1,154 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* Custom animations for AI-themed elements */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-@media (prefers-color-scheme: dark) {
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Light theme */
+    --background: 0 0% 98%; /* very soft, warm off-white */
+    --foreground: 220 5% 20%; /* soft, dark grey */
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 220 5% 20%; /* soft, dark grey */
+    --popover: 0 0% 100%; /* white */
+    --popover-foreground: 220 5% 20%; /* soft, dark grey */
+    --primary: 210 30% 35%; /* Deep Ocean Blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 220 14.3% 95.9%; /* light gray */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 220 14.3% 95.9%; /* light gray */
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 160 20% 60%; /* Digital Mist Green */
+    --accent-foreground: 220 5% 20%; /* soft, dark grey */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 160 20% 60%; /* Digital Mist Green */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark theme */
+    --background: 240 10% 6%; /* #090917 */
+    --foreground: 220 5% 80%; /* very light grey */
+    --card: 220 10% 8%; /* deep, cool charcoal with hint of blue */
+    --card-foreground: 220 5% 80%; /* very light grey */
+    --popover: 220 10% 8%; /* deep, cool charcoal with hint of blue */
+    --popover-foreground: 220 5% 80%; /* very light grey */
+    --primary: 210 30% 35%; /* Deep Ocean Blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 160 30% 70%; /* Digital Mist Green */
+    --accent-foreground: 220 5% 80%; /* very light grey */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 160 30% 70%; /* Digital Mist Green */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans 3', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+  }
+
+  /* Custom scrollbar for modern look */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: var(--radius);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.7);
+  }
+}
+
+@layer utilities {
+  /* AI-themed utility classes */
+  .ai-gradient-text {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .ai-glow {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.5);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .ai-glow:hover {
+    box-shadow: 0 0 25px hsl(var(--primary) / 0.7);
+  }
+
+  .ai-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .ai-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .ai-card {
+    backdrop-filter: blur(10px);
+    background-color: hsl(var(--card) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.2);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+  }
+
+  .ai-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px hsl(var(--primary) / 0.1);
+  }
+
+  .ai-grid-pattern {
+    background-image: radial-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
 }

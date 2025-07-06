@@ -1,5 +1,4 @@
 import * as React from "react";
-// @ts-expect-error: vaul is not typed
 import { Drawer as DrawerPrimitive } from "vaul";
 
 import { cn } from "../../lib/utils";
